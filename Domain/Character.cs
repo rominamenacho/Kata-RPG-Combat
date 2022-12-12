@@ -8,6 +8,7 @@ namespace combat_kata
         private int _level;
         private bool _alive;
         private readonly int _id;
+        private (int, int) _position;
         protected int _maxRangeAttack;
 
         public double Health { get => _health; }
@@ -15,6 +16,7 @@ namespace combat_kata
         public bool IsAlive { get => _alive; }
         public int Id { get => _id; }
         public int MaxRangeAttack { get => _maxRangeAttack; }
+        public (int, int) Position { get => _position; set => _position = value; }
 
         public const int MAX_HEALTH = 1000;
         public const int MIN_HEALTH = 0;
@@ -25,6 +27,7 @@ namespace combat_kata
             _level = INITIAL_LEVEL;
             _alive = true;
             _id = new Random().Next(1000);
+            _position = (0, 0);//(new Random().Next(50), new Random().Next(50));
         }
 
 

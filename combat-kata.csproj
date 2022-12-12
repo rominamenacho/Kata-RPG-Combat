@@ -6,8 +6,4 @@
     <RootNamespace>combat_kata</RootNamespace>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Folder Include="Actions\" />
-  </ItemGroup>
-
 </Project>

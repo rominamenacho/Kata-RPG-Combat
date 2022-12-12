@@ -1,35 +1,56 @@
-﻿namespace combat_kata.Actions
+﻿using System;
+
+namespace combat_kata.Actions
 {
     public class DealDamage
     {
-        public void Attack(int damage, Character attacker, Character attacked)
+        public void Attack(int damage, Character attacker, Character target)
         {
-            if (!AreSameCharacter(attacker, attacked))
+            if (CanAttack(attacker, target))
             {
-                ImpactOnHealth(damage, attacker, attacked);
+                ImpactOnHealth(damage, attacker, target);
             }
         }
 
-        private bool AreSameCharacter(Character attacker, Character attacked)
+        private bool CanAttack(Character attacker, Character target)
         {
-            return attacker.Id == attacked.Id;
+            return AreDifferentCharacters(attacker, target)
+                    && IsTargetInRange(attacker, target);
         }
-        private void ImpactOnHealth(int damage, Character attacker, Character attacked)
+
+        private bool IsTargetInRange(Character attacker, Character target)
+        {
+            int distance = GetManhattanDistance(attacker, target);
+
+            return (distance <= attacker.MaxRangeAttack);
+        }
+
+        private static int GetManhattanDistance(Character attacker, Character target)
+        {
+            return Math.Abs(attacker.Position.Item1 - target.Position.Item1) +
+                             Math.Abs(attacker.Position.Item2 - target.Position.Item2);
+        }
+
+        private bool AreDifferentCharacters(Character attacker, Character target)
+        {
+            return attacker.Id != target.Id;
+        }
+        private void ImpactOnHealth(int damage, Character attacker, Character target)
         {
             /////////strategy ?
-            if (AttackedIs5LevelsOrMoreAboveAttacker(attacker, attacked))
+            if (AttackedIs5LevelsOrMoreAboveAttacker(attacker, target))
             {
-                attacked.Reduce50PercentDamage(damage);
+                target.Reduce50PercentDamage(damage);
             }
             else
             {
-                attacked.Increase50PercentDamage(damage);
+                target.Increase50PercentDamage(damage);
             }
         }
 
-        private bool AttackedIs5LevelsOrMoreAboveAttacker(Character attacker, Character attacked)
+        private bool AttackedIs5LevelsOrMoreAboveAttacker(Character attacker, Character target)
         {
-            return attacked.Level - attacker.Level >= 5;
+            return target.Level - attacker.Level >= 5;
         }
 
 
