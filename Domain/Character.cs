@@ -28,14 +28,10 @@ namespace combat_kata
         }
 
 
-
-
         public void HealthMe(int healthReceive)
         {
             _health = ((healthReceive + _health) <= MAX_HEALTH) ? (healthReceive + _health) : MAX_HEALTH;
         }
-
-
 
         public void Reduce50PercentDamage(int damage)
         {

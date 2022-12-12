@@ -6,9 +6,6 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "combat-kata", "combat-kata.csproj", "{DB1835E8-8E6F-48BD-ACD9-02F460A529A1}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestProjectCombatKata", "..\TestProjectCombatKata\TestProjectCombatKata.csproj", "{2376BFB8-5CA6-42B3-9F22-B706E1BB669C}"
-	ProjectSection(ProjectDependencies) = postProject
-		{DB1835E8-8E6F-48BD-ACD9-02F460A529A1} = {DB1835E8-8E6F-48BD-ACD9-02F460A529A1}
-	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
