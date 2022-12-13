@@ -1,4 +1,6 @@
-﻿using System;
+﻿using combat_kata.Domain;
+using System;
+using System.Collections.Generic;
 
 namespace combat_kata
 {
@@ -17,6 +19,7 @@ namespace combat_kata
         public int Id { get => _id; }
         public int MaxRangeAttack { get => _maxRangeAttack; }
         public (int, int) Position { get => _position; set => _position = value; }
+        public List<Faction> Factions { get; set; }
 
         public const int MAX_HEALTH = 1000;
         public const int MIN_HEALTH = 0;
@@ -27,7 +30,8 @@ namespace combat_kata
             _level = INITIAL_LEVEL;
             _alive = true;
             _id = new Random().Next(1000);
-            _position = (0, 0);//(new Random().Next(50), new Random().Next(50));
+            _position = (0, 0);
+            Factions = new List<Faction>();
         }
 
 

@@ -15,7 +15,21 @@ namespace combat_kata.Actions
         private bool CanAttack(Character attacker, Character target)
         {
             return AreDifferentCharacters(attacker, target)
-                    && IsTargetInRange(attacker, target);
+                    && IsTargetInRange(attacker, target)
+            && !IsAlly(attacker, target);
+        }
+
+        private bool IsAlly(Character attacker, Character target)
+        {
+
+            foreach (var item in attacker.Factions)
+            {
+                if (target.Factions.Find(f => f.Id == item.Id) != null)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
         private bool IsTargetInRange(Character attacker, Character target)
